@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useEffect } from "react"
+// import { useEffect } from "react"
 
 export default function Node(){
 
@@ -12,24 +12,43 @@ export default function Node(){
         parent: this.parent,
         children: [],
         title: 'Enter your title here.',
-        board: {}
+        board: 'Body Text'
     })
     
     return (
         <div class='node-container'>
-            <title text={props.title} setText={(x) => setProps(...props, title=x)}></title>
-            <separator></separator>
-            <board info={this.board} setBoard = {(x) => setProps(...props, board=x)}></board>
+            {/* <Title text={this.props.title} setText={(x) => setProps(...props, title=x)}></Title>
+            <Separator></Separator>
+            <Board info={this.props.board} setBoard = {(x) => setProps(...props, board=x)}></Board> */}
+
+            <text>
+                {props.parent}
+            </text>
         </div>
     )
 }
 
-const title = () =>{
-
-
+const Title = () =>{
     return (
         <div>
-            
+            <input class='title-input'></input>
+            <text>{this.text}</text>
         </div>
     )
 }
+
+const Board = () => {
+    return (
+        <div id='container'>
+            <text>{this.board}</text>
+        </div>
+    )
+}
+  
+  const Separator = () => {
+    return (
+      <div>
+  
+      </div>
+    )
+  }

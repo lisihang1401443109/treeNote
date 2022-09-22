@@ -1,9 +1,10 @@
 import './App.css';
 import Node from './node';
+import { useState } from 'react';
 
 function App() {
 
-  const [currNode, setCurrNode] = useState(})
+  const [currNode, setCurrNode] = useState()
 
   return (
     <div className="App">
@@ -14,11 +15,14 @@ function App() {
 }
 
 const Display = () =>{
-
+  return (
+    <div>
+      {/* <text>{'hi there'}</text> */}
+      <Node {...{parent: 'hi there'}}></Node>
+      {/* <text>{'hi there'}</text> */}
+    </div>
+  )
 }
 
-const RootNode = () => {
-
-}
 
 export default App;
