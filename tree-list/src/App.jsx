@@ -1,11 +1,13 @@
 import './App.css';
-import Node from './node';
+import Node from './Node';
 import { useState, useEffect} from 'react';
+import Parent from './Parent';
+import Children from './Children';
+import Action from './Action'
 
 function App() {
 
   const root = {
-    parent: null,
     type: 'root',
     children: []
   }
@@ -19,23 +21,35 @@ function App() {
 
 const Display = (props) =>{
 
+  const parentList = []
+
   const root = props
 
   const [node, setNode] = useState({
     index: 0,
-    parent: null,
     type: 'text',
     title: 'new title',
-    value: 'new value',
+    content: 'new content',
     children: []
   })
 
+  useEffect( () => {
+    console.log('node: ' + JSON.stringify(node))
+  }, [node])
 
+  const editContent = (newTitle, newContent) => {
+    setNode( (node) => ({
+      ...node,
+      title: newTitle,
+      content: newContent
+    }))
+  }
 
   return (
     <div id='main-box'>
-      <Parent node={node.parent} />
-      <Node node={node} />
+      <Parent parentList={parentList}/>
+      <Node node={node} editContent={editContent} />
+      <Action />
       <Children nodes={node.children}/>
     </div>
   )
