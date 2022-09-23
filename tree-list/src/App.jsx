@@ -4,28 +4,39 @@ import { useState, useEffect} from 'react';
 
 function App() {
 
-  const [currNodeParent, setCurrNodeParent] = useState(null)
-
-  useEffect( () => {
-    setCurrNodeParent(null)
-  }, )
+  const root = {
+    parent: null,
+    type: 'root',
+    children: []
+  }
 
   return (
     <div className="App">
-      <p>{'currNodeParent = ' + JSON.stringify(currNodeParent)}</p>
-      <Display currNodeParent={currNodeParent} setCurrNodeParent={setCurrNodeParent}></Display>
+      <Display root={root} />
     </div>
   );
 }
 
 const Display = (props) =>{
 
-  const { currNodeParent, setCurrNodeParent} = props
-  const [type, setType] = useState('text')
+  const root = props
+
+  const [node, setNode] = useState({
+    index: 0,
+    parent: null,
+    type: 'text',
+    title: 'new title',
+    value: 'new value',
+    children: []
+  })
+
+
 
   return (
     <div id='main-box'>
-      <Node {...{parent: currNodeParent, position: 0, type: type, setType: setType, setCurrNodeParent: setCurrNodeParent}}></Node>
+      <Parent node={node.parent} />
+      <Node node={node} />
+      <Children nodes={node.children}/>
     </div>
   )
 }
