@@ -23,7 +23,7 @@ const Node = (props) => {
     const contentRef = useRef()
 
     const checkChange = (e) => {
-        if ()
+        if (true)
         {
             if (titleRef.current.innerHTML == node.title && contentRef.current.innerHTML == node.content){
                 // do nothing
