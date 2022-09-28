@@ -22,14 +22,24 @@ const Node = (props) => {
     const titleRef = useRef()
     const contentRef = useRef()
 
+    const focusContent = () => {
+        contentRef.current.focus()
+    }
+
+    useEffect(()=>{
+        contentRef.current.value = node.content
+    }, [])
+    
     const checkChange = (e) => {
-        if ()
+        console.log(e.key)
+        if (e.key == 'Enter')
         {
-            if (titleRef.current.innerHTML == node.title && contentRef.current.innerHTML == node.content){
+            if (titleRef.current.innerHTML == node.title && contentRef.current.value == node.content){
                 // do nothing
             }else{
-                console.log('change happened: ', titleRef.current.innerHTML, contentRef.current.innerHTML)
-                editContent(titleRef.current.innerHTML, contentRef.current.innerHTML)
+                console.log('change happened: ', titleRef.current.innerHTML, contentRef.current.value)
+                editContent(titleRef.current.innerHTML, contentRef.current.value)
+                focusContent()
             }
         }
     }
@@ -42,9 +52,9 @@ const Node = (props) => {
         </div>
         <Separator />
         <div id='content'>
-            <div contentEditable='true' ref={contentRef} onKeyDown={checkChange}>
+            <textarea ref={contentRef} onKeyDown={checkChange}>
                 {node.content}
-            </div>
+            </textarea>
         </div>
     </div>
 }

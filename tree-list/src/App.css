@@ -14,3 +14,20 @@
   position: relative;
   width: 90%;
 }
+
+#title {
+  margin: 0px;
+  margin-top: 20px;
+  height: auto;
+  background-color: aqua;
+}
+
+#content {
+  width: 100%;
+}
+
+textarea{
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
